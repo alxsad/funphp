@@ -67,4 +67,14 @@ class Success extends \PHPUnit_Framework_TestCase
         });
         $this->assertEquals(false, $result);
     }
+
+    public function testReduce()
+    {
+        $input = ['red' => 'r', 'green' => 'g', 'blue' => 'b'];
+        $result = f\reduce($input, function ($v, $k, $c, $reduced) {
+            $reduced[$v] = $k;
+            return $reduced;
+        }, []);
+        $this->assertEquals(['r' => 'red', 'g' => 'green', 'b' => 'blue'], $result);
+    }
 }

@@ -39,3 +39,10 @@ function all ($c, \Closure $fn) {
     }
     return true;
 }
+
+function reduce ($c, \Closure $fn, $reduced = null) {
+    foreach ($c as $k => $v) {
+        $reduced = $fn($v, $k, $c, $reduced);
+    }
+    return $reduced;
+}
